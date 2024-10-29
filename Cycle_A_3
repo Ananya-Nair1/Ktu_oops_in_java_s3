@@ -1,0 +1,38 @@
+//Matrix Multiplication
+
+class Mat
+{
+    int c[][] = new int[3][3];
+    void multiplication(int a[][], int b[][])
+    {
+        int i,j,k;
+        int d[][] = new int[3][3];
+        for(i=0;i<3;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+                d[i][j]=0;
+                for(k=0;k<2;k++)
+                {
+                    d[i][j] = d[i][j]+ a[i][k] + b[k][j];
+                }
+                System.out.print(d[i][j]+" ");
+
+
+            }
+            System.out.println();
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Mat m = new Mat();
+        Mat n = new Mat();
+        int m1[][] = {{1,0},{0,1},{0,0}};
+        int m2[][]= {{1,0,0},{0,1,0}};
+        m.c = m1;
+        n.c = m2;
+        Mat p = new Mat();
+        p.multiplication(m.c, n.c);
+    }    
+}
