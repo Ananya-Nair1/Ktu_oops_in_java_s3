@@ -16,7 +16,7 @@ class OddException extends Exception
         super(message);
     }
 }
-class main
+class Checking
 { 
      public static void check_num(int n) throws EvenException, OddException
     {
@@ -32,13 +32,13 @@ class main
 }
     
 
-public class practice5 {
+public class Main {
     
     public static void main(String[] args)
     {
         try
         {
-            main m = new main();
+            Checking m = new Checking();
             int n = Integer.parseInt(args[0]);
             m.check_num(n);
 
