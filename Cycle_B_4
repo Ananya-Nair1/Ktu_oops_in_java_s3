@@ -1,0 +1,96 @@
+//JAVA CORE CONCEPTS OF INHERITANCE AND POLYMORPHISM
+
+import java.io.*;
+
+class Employee
+{
+    String Name;
+    int age;
+    int salary;
+
+    Employee(String Name, int age, int salary)
+    {
+        this.Name = Name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    void Print_salary()
+    {
+        System.out.println("salary is"+this.salary);
+    }
+
+    void Print_details()
+    {
+        System.out.println("name is"+this.Name);
+        System.out.println("Age is"+this.age);
+    }
+}
+
+class Officer extends Employee
+{
+    String specialization;
+
+    Officer(String name,int age, int salary,String specialization)
+    {
+        super(name,age,salary);
+        this.specialization = specialization;
+    }
+
+    void Print_spec()
+    {
+        System.out.println("specialization is"+this.specialization);
+    }
+}
+
+class Manager extends Employee
+{
+    String department;
+    Manager(String Name,int age, int salary,String department)
+    {
+        super(Name,age,salary);
+        this.department = department;
+    }
+    void Print_dept()
+    {
+        System.out.println("dept is"+this.department);
+    }
+}
+
+public class practice1 {
+    public static void main(String[] args) throws Exception {
+        try{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("enter name");
+            String Name = br.readLine();
+            System.out.println("enter age");
+            int age = Integer.parseInt(br.readLine());
+            System.out.println("enter salary");
+            int salary = Integer.parseInt(br.readLine());
+            System.out.println("enter speciali");
+            String spc = br.readLine();
+            System.out.println("enter dept");
+            String dpt = br.readLine();
+
+            Employee e = new Employee(Name, age, salary);
+            e.Print_salary();
+            e.Print_details();
+
+            Officer o = new Officer(Name,age,salary,spc);
+            o.Print_spec();
+
+            Manager m = new Manager(Name,age,salary,dpt);
+            m.Print_dept();
+
+        }
+
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+    
+}
+
