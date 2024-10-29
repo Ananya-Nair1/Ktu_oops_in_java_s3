@@ -1,0 +1,35 @@
+//FILE HANDLING (READING AND WRITING)
+
+import java.io.*;
+
+
+public class practice3 {
+    public static void main(String[] args) throws Exception {
+          
+            int c;
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter file name");
+            String str = br.readLine();
+            File f = new File(str);
+            f.createNewFile();
+            System.out.println("File created successfully");
+            System.out.println("enter content to be written");
+            String w = br.readLine();
+            FileWriter fw = new FileWriter(str);
+            fw.write(w);
+            fw.close();
+            FileReader fr = new FileReader(str);
+            BufferedReader b = new BufferedReader(fr);
+            System.out.println("file content is:");
+            while((c=b.read()) != -1)
+            {
+                
+                System.out.print((char)c);
+            }
+            fr.close();
+
+        }
+
+    }
+    
+
