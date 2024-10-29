@@ -1,0 +1,58 @@
+//USER DEFINED EXCEPTIONS USING COMMAND LINE ARGUMENTS
+
+class EvenException extends Exception
+{
+    EvenException(String message)
+    {
+       super(message);
+    }
+
+}
+
+class OddException extends Exception
+{
+    OddException(String message)
+    {
+        super(message);
+    }
+}
+class main
+{ 
+     public static void check_num(int n) throws EvenException, OddException
+    {
+        if(n%2==0)
+        {
+            throw new EvenException("even number, square is "+ n*n);
+        }
+        else
+        {
+            throw new OddException("odd number, cube is "+ n*n*n);
+        }
+    }
+}
+    
+
+public class practice5 {
+    
+    public static void main(String[] args)
+    {
+        try
+        {
+            main m = new main();
+            int n = Integer.parseInt(args[0]);
+            m.check_num(n);
+
+            
+        }
+
+        catch(EvenException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        catch(OddException o)
+        {
+            System.out.println(o.getMessage());
+        }
+
+    }
+}
