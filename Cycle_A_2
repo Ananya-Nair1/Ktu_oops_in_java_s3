@@ -1,0 +1,32 @@
+//To check frquency of 'l' in hello
+
+class Frequency
+{
+    char s[] = new char[5];
+    int count =0;
+    int i;
+    int freq()
+    {
+        for(i=0;i<5;i++)
+        {
+            if(s[i] == 'l')
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        int l;
+        char k[] = {'h','e','l','l','o'};
+        Frequency f =new Frequency();
+        f.s = k;
+        l = f.freq();
+        System.out.println(l);
+    }
+}
