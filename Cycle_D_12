@@ -1,0 +1,62 @@
+//THREAD SYNCHRONIZATION
+
+
+class Common
+{
+    public boolean track;
+    public Common()
+    {
+        track = true;
+    }
+}
+
+class OddThread extends Thread{
+    Common c;
+    public OddThread(Common c)
+    {
+        super();
+        this.c = c;
+    }
+
+    public void run()
+    {
+        for(int i=1; i<=30; i++)
+        {
+            System.out.println(i);
+            synchronized (c) {
+                c.track = false;
+            }
+            while(c.track == false);
+        }
+    }
+}
+
+class EvenThread extends Thread{
+    Common c;
+    public EvenThread(Common c)
+    {
+        super();
+        this.c = c;
+    }
+    public void run()
+    {
+        for(int i=2; i<30; i++)
+        {
+            while(c.track == true);
+            System.out.println(i);
+            synchronized (c) {
+                c.track = false;   
+            }
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Common c = new Common();
+        OddThread t1 = new OddThread(c);
+        EvenThread t2 = new EvenThread(c);
+        t1.start();
+        t2.start();
+    }
+    
+}
