@@ -57,7 +57,7 @@ class Manager extends Employee
     }
 }
 
-public class practice1 {
+public class Main {
     public static void main(String[] args) throws Exception {
         try{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
