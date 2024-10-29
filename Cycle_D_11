@@ -1,0 +1,104 @@
+//MULTITHREADING IN JAVA
+
+import java.io.*;
+import java.util.*;
+
+class RandomNumber extends Thread
+{
+    public int n;
+    public boolean track;
+    public void run()
+    {
+        Random r = new Random();
+        for(int i=1; i<=10; i++)
+        {
+            n=r.nextInt(20);
+            if(n%2 == 0)
+            {
+                track=true;
+            }
+            else{
+                track=false;
+            }
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+class EvenNumber extends Thread{
+    RandomNumber obj;
+
+    EvenNumber(RandomNumber obj)
+    {
+        super();
+        this.obj=obj;
+    }
+    public int a;
+    public void run()
+    {
+        for(int i=1; i<=10; i++)
+        {
+            int a = obj.n;
+            if((a!=-1) &&(obj.track==true))
+            {
+                System.out.println("Number is "+a);
+                System.out.println("Square is "+(a*a));
+            }
+            try{
+                Thread.sleep(1000);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+class OddNumber extends Thread{
+    RandomNumber obj;
+    OddNumber(RandomNumber obj)
+    {
+        super();
+        this.obj = obj;
+    }
+    public int a;
+    public void run()
+    {
+        for(int i=1; i<=10; i++)
+        {
+            int a=obj.n;
+            if((a!=-1) && (obj.track==false))
+            {
+                System.out.println("Number is "+a);
+                System.out.println("Cube is "+(a*a*a));
+            }
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) throws IOException{
+        RandomNumber d = new RandomNumber();
+        d.start();
+        OddNumber o = new OddNumber(d);
+        EvenNumber e = new EvenNumber(d);
+        o.start();
+        e.start();
+    }
+    
+}
