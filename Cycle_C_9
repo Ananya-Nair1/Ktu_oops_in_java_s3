@@ -1,0 +1,33 @@
+//STRING TOKENIZER
+
+import java.util.*;
+import java.io.*;
+
+public class practice4
+{
+    public static void main(String[] args)
+    {  
+        try
+        {
+           BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
+           System.out.println("enter integers separated with a ,");
+           String str = br.readLine();
+           StringTokenizer s = new StringTokenizer(str, ",");
+           int sum=0;
+           int a;
+           while(s.hasMoreTokens())
+           {
+               String st = s.nextToken();
+               a = Integer.parseInt(st);
+               System.out.println(a);
+               sum = sum+a;
+           }
+           System.out.println("sum is "+ sum);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+}
